@@ -64,8 +64,8 @@ class PaymentProcessor {
     loadUserData() {
         // Obtener datos del usuario desde la URL o localStorage
         const urlParams = new URLSearchParams(window.location.search);
-        console.log("phoneNumber - received", phoneNumber);
         const phoneNumber = urlParams.get('phone') || '34692853761';
+        console.log("phoneNumber - received", phoneNumber);
         const userName = urlParams.get('name') || 'Cliente Demo';
 
         // Pre-llenar algunos campos si están disponibles
