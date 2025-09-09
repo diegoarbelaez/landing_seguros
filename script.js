@@ -343,8 +343,7 @@ class PaymentProcessor {
             };
             console.log("paymentData", paymentData);
             console.log('Enviando confirmación de pago al bot:', paymentData);
-            return;
-            
+
             // Enviar al endpoint del bot
 
             let url = 'https://f729c47d77f5.ngrok-free.app/api/payment-confirmation';
