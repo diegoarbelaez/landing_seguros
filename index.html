@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seguro Celular - Pago Seguro</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>Demo Seguros</span>
+            </div>
+            <div class="security-badge">
+                <i class="fas fa-lock"></i>
+                <span>Pago 100% Seguro</span>
+            </div>
+        </header>
+
+        <!-- Progress Steps -->
+        <div class="progress-steps">
+            <div class="step active">
+                <div class="step-number">1</div>
+                <span>Datos</span>
+            </div>
+            <div class="step active">
+                <div class="step-number">2</div>
+                <span>Pago</span>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <span>Confirmación</span>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="payment-card">
+                <div class="card-header">
+                    <h1><i class="fas fa-mobile-alt"></i> Seguro de Celular</h1>
+                    <p class="subtitle">Protege tu dispositivo con la mejor cobertura</p>
+                </div>
+
+                <!-- Product Summary -->
+                <div class="product-summary">
+                    <div class="product-info">
+                        <div class="product-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="product-details">
+                            <h3>Seguro Celular Premium</h3>
+                            <p>Cobertura completa: Robo, daños, líquidos, fallas técnicas</p>
+                            <div class="coverage-items">
+                                <span class="coverage-item"><i class="fas fa-check"></i> Robo y extravío</span>
+                                <span class="coverage-item"><i class="fas fa-check"></i> Daños por caídas</span>
+                                <span class="coverage-item"><i class="fas fa-check"></i> Daños por líquidos</span>
+                                <span class="coverage-item"><i class="fas fa-check"></i> Fallas técnicas</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price-info">
+                        <div class="price">
+                            <span class="currency">$</span>
+                            <span class="amount">15.000</span>
+                            <span class="period">/mes</span>
+                        </div>
+                        <p class="price-note">Pago mensual</p>
+                    </div>
+                </div>
+
+                <!-- Payment Form -->
+                <form class="payment-form" id="paymentForm">
+                    <div class="form-section">
+                        <h3><i class="fas fa-user"></i> Información Personal</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fullName">Nombre Completo</label>
+                                <input type="text" id="fullName" name="fullName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Correo Electrónico</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Teléfono</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="document">Documento de Identidad</label>
+                                <input type="text" id="document" name="document" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3><i class="fas fa-credit-card"></i> Método de Pago</h3>
+                        <div class="payment-methods">
+                            <div class="payment-method selected" data-method="pse">
+                                <div class="method-icon">
+                                    <i class="fas fa-university"></i>
+                                </div>
+                                <div class="method-info">
+                                    <h4>PSE - Pago Seguro en Línea</h4>
+                                    <p>Paga directamente desde tu cuenta bancaria</p>
+                                </div>
+                                <div class="method-check">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Terms and Conditions -->
+                    <div class="terms-section">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="acceptTerms" required>
+                            <span class="checkmark"></span>
+                            <span class="terms-text">
+                                Acepto los <a href="#" class="terms-link">términos y condiciones</a> y la <a href="#" class="terms-link">política de privacidad</a>
+                            </span>
+                        </label>
+                    </div>
+
+                    <!-- Payment Button -->
+                    <button type="submit" class="payment-button" id="paymentButton">
+                        <i class="fas fa-lock"></i>
+                        <span>Pagar $15.000 COP</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+
+                <!-- Security Features -->
+                <div class="security-features">
+                    <div class="security-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Datos encriptados SSL</span>
+                    </div>
+                    <div class="security-item">
+                        <i class="fas fa-lock"></i>
+                        <span>Pago 100% seguro</span>
+                    </div>
+                    <div class="security-item">
+                        <i class="fas fa-headset"></i>
+                        <span>Soporte 24/7</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Loading Overlay -->
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="loading-content">
+                <div class="loading-spinner"></div>
+                <h3>Procesando tu pago...</h3>
+                <p>Por favor no cierres esta ventana</p>
+            </div>
+        </div>
+
+        <!-- Success Modal -->
+        <div class="modal-overlay" id="successModal">
+            <div class="modal-content">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>¡Pago Exitoso!</h2>
+                <p>Tu seguro de celular ha sido activado correctamente.</p>
+                <div class="transaction-details">
+                    <div class="detail-item">
+                        <span>Transacción:</span>
+                        <span id="transactionId">DEMO-123456789</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Monto:</span>
+                        <span>$15.000 COP</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Estado:</span>
+                        <span class="status-success">Aprobado</span>
+                    </div>
+                </div>
+                <button class="close-button" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
