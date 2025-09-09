@@ -64,7 +64,7 @@ class PaymentProcessor {
     loadUserData() {
         // Obtener datos del usuario desde la URL o localStorage
         const urlParams = new URLSearchParams(window.location.search);
-        const phoneNumber = urlParams.get('phone') || '34692853761';
+        const phoneNumber = urlParams.get('phone');
         console.log("phoneNumber - received", phoneNumber);
         const userName = urlParams.get('name') || 'Cliente Demo';
 
@@ -308,16 +308,16 @@ class PaymentProcessor {
     async notifyBotPaymentSuccess(transactionId) {
         try {
             const paymentData = {
-                phoneNumber: this.paymentData.phoneNumber,
+                phoneNumber: this.getFormData().phone,
                 paymentStatus: 'success',
                 transactionId: transactionId,
                 amount: 15000,
                 timestamp: new Date().toISOString(),
                 userData: this.getFormData()
             };
-
+            console.log("paymentData", paymentData);
             console.log('Enviando confirmación de pago al bot:', paymentData);
-
+            return;
             // Enviar al endpoint del bot
 
             let url = 'https://f729c47d77f5.ngrok-free.app/api/payment-confirmation';
