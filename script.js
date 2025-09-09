@@ -70,8 +70,34 @@ class PaymentProcessor {
 
         // Pre-llenar algunos campos si están disponibles
         const phoneInput = document.getElementById('phone');
-        if (phoneInput && phoneNumber) {
-            phoneInput.value = phoneNumber;
+        const countrySelect = document.getElementById('countryCode');
+        
+        if (phoneNumber) {
+            // Si el número viene con indicativo, separarlo
+            if (phoneNumber.startsWith('+')) {
+                // Buscar el indicativo en las opciones disponibles
+                const countryOptions = countrySelect.querySelectorAll('option');
+                let foundCountry = false;
+                
+                for (let option of countryOptions) {
+                    if (phoneNumber.startsWith(option.value)) {
+                        countrySelect.value = option.value;
+                        phoneInput.value = phoneNumber.substring(option.value.length);
+                        foundCountry = true;
+                        break;
+                    }
+                }
+                
+                // Si no se encuentra el indicativo, usar Colombia por defecto
+                if (!foundCountry) {
+                    countrySelect.value = '+57';
+                    phoneInput.value = phoneNumber.substring(1); // Remover el +
+                }
+            } else {
+                // Si no tiene indicativo, usar Colombia por defecto
+                countrySelect.value = '+57';
+                phoneInput.value = phoneNumber;
+            }
         }
 
         const nameInput = document.getElementById('fullName');
@@ -120,10 +146,10 @@ class PaymentProcessor {
                 }
                 break;
             case 'phone':
-                const phoneRegex = /^[0-9+\-\s()]+$/;
+                const phoneRegex = /^[0-9]+$/;
                 if (!phoneRegex.test(value) || value.length < 7) {
                     isValid = false;
-                    errorMessage = 'Ingresa un número de teléfono válido';
+                    errorMessage = 'Ingresa un número de teléfono válido (solo números)';
                 }
                 break;
             case 'document':
@@ -308,7 +334,7 @@ class PaymentProcessor {
     async notifyBotPaymentSuccess(transactionId) {
         try {
             const paymentData = {
-                phoneNumber: this.getFormData().phone.startsWith('57') ? this.getFormData().phone : '57' + this.getFormData().phone,
+                phoneNumber: this.getFormData().phone,
                 paymentStatus: 'success',
                 transactionId: transactionId,
                 amount: 15000,
@@ -317,6 +343,7 @@ class PaymentProcessor {
             };
             console.log("paymentData", paymentData);
             console.log('Enviando confirmación de pago al bot:', paymentData);
+            return;
             
             // Enviar al endpoint del bot
 
@@ -349,6 +376,17 @@ class PaymentProcessor {
         for (let [key, value] of formData.entries()) {
             data[key] = value;
         }
+        
+        // Concatenar indicativo del país con el número de teléfono sin el símbolo +
+        const countryCode = data.countryCode || '+57';
+        const phoneNumber = data.phone || '';
+        
+        // Remover el símbolo + del indicativo y concatenar con el número
+        const cleanCountryCode = countryCode.replace('+', '');
+        data.phone = cleanCountryCode + phoneNumber;
+        
+        // Mantener también el indicativo original para referencia
+        data.countryCode = countryCode;
         
         return data;
     }
