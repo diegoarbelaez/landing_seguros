@@ -308,7 +308,7 @@ class PaymentProcessor {
     async notifyBotPaymentSuccess(transactionId) {
         try {
             const paymentData = {
-                phoneNumber: this.getFormData().phone,
+                phoneNumber: this.getFormData().phone.startsWith('57') ? this.getFormData().phone : '57' + this.getFormData().phone,
                 paymentStatus: 'success',
                 transactionId: transactionId,
                 amount: 15000,
