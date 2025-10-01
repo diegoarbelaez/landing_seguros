@@ -346,7 +346,7 @@ class PaymentProcessor {
 
             // Enviar al endpoint del bot
 
-            let url = 'https://4155bc8c5871.ngrok-free.app/api/payment-confirmation';
+            let url = 'https://5aca75648f63.ngrok-free.app/api/payment-confirmation';
 
             const response = await fetch(url, {
                 method: 'POST',
